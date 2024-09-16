@@ -1,5 +1,7 @@
 let rand_num1 = 0 ;
 let rand_num2 = 0 ;
+let correctCount = 0;
+let incorrectCount = 0;
 
 const getRandomIntNumberInRange = (min,max) => {
     return Math.floor(Math.random() *max) + min;
@@ -19,10 +21,17 @@ addEventListener("DOMContentLoaded", () => {
 document.querySelector('button').addEventListener('click', () => {
     const answer = Number(document.querySelector('input').value)
     const correctAnswer = rand_num1 + rand_num2
+    const Calcu = document.querySelector('#result');
     if (answer === correctAnswer){
-        alert('Correct!')
+        Calcu.textContent = 'Correct!';
+        Calcu.style.color = 'green';
+        correctCount++;
+        document.querySelector('#oikein').textContent = `Correct answers: ${correctCount}`;
     } else {
-        alert('Incorrect!')
+        Calcu.textContent = `Incorrect! The correct answer was ${correctAnswer}`;
+        Calcu.style.color = 'red';
+        incorrectCount++;
+        document.querySelector('#vaarin').textContent = `Incorrect answers: ${incorrectCount}`;
     }
 
     ramdomizeNumbers();
